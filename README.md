@@ -1,33 +1,95 @@
-- 👋 Hi, I’m @John2023GG
-- 👀 I’m interested in ...
-- 🌱 I’m currently learning ...
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
+-# 导入所需的库
+import datetime
 
-<!---
-John2023GG/John2023GG is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->import database  # Assuming a separate module for database operations
+# 定义星座字典
+zodiac_dict = {
+    "水瓶座": ((1, 20), (2, 18)),
+    "双鱼座": ((2, 19), (3, 20)),
+    "白羊座": ((3, 21), (4, 19)),
+    "金牛座": ((4, 20), (5, 20)),
+    "双子座": ((5, 21), (6, 21)),
+    "巨蟹座": ((6, 22), (7, 22)),
+    "狮子座": ((7, 23), (8, 22)),
+    "处女座": ((8, 23), (9, 22)),
+    "天秤座": ((9, 23), (10, 22)),
+    "天蝎座": ((10, 23), (11, 21)),
+    "射手座": ((11, 22), (12, 21)),
+    "摩羯座": ((12, 22), (1, 19)),
+}
 
-def calculate_co2(actions):
-    total_co2 = 0
-    for action, details in actions.items():
-        emission_factor = get_emission_factor(action)  # Fetch from database or API
-        co2_emission = details * emission_factor
-        total_co2 += co2_emission
-    return total_co2
+# 定义生肖字典
+zodiac_animal_dict = {
+    "鼠": 0,
+    "牛": 1,
+    "虎": 2,
+    "兔": 3,
+    "龙": 4,
+    "蛇": 5,
+    "马": 6,
+    "羊": 7,
+    "猴": 8,
+    "鸡": 9,
+    "狗": 10,
+    "猪": 11,
+}
 
-def main():
-    while True:
-        user_actions = get_user_input()
-        total_co2 = calculate_co2(user_actions)
-        display_results(total_co2)
-        offer_tips(total_co2)
-        save_data(user_actions, total_co2)
+# 定义性格特点字典
+personality_dict = {
+    "男": {
+        "水瓶座": "独立、创新、博爱",
+        "双鱼座": "浪漫、感性、富有同情心",
+        "白羊座": "热情、冲动、富有冒险精神",
+        "金牛座": "务实、可靠、勤奋",
+        "双子座": "善于沟通、思维敏捷、好奇心强",
+        "巨蟹座": "温柔、体贴、富有安全感",
+        "狮子座": "自信、霸气、领导能力强",
+        "处女座": "细心、追求完美、有条理",
+        "天秤座": "优雅、 дипломатичный、追求公平",
+        "天蝎座": "神秘、深沉、洞察力强",
+        "射手座": "乐观、自由、热爱旅行",
+        "摩羯座": "踏实、勤奋、目标明确",
+    },
+    "女": {
+        "水瓶座": "独立、自主、有主见",
+        "双鱼座": "温柔、善良、梦幻",
+        "白羊座": "活潑、开朗、敢爱敢恨",
+        "金牛座": "贤惠、顾家、踏实",
+        "双子座": "聪慧、机智、善于交际",
+        "巨蟹座": "母性、体贴、充满爱意",
+        "狮子座": "自信、霸气、御姐范",
+        "处女座": "细心、精致、追求完美",
+        "天秤座": "优雅、知性、魅力四射",
+        "天蝎座": "性感、神秘、吸引力强",
+        "射手座": "乐观、开朗、热爱自由",
+        "摩羯座": "独立、成熟、事业心强",
+    },
+}
 
-# ... Implement functions for user input, results display, saving data, etc.
+# 计算星座
+def get_constellation(birth_year, birth_month, birth_day):
+    """
+    根据出生日期计算星座
 
-if __name__ == "__main__":
-    main()
+    Args:
+        birth_year: 出生年
+        birth_month: 出生月
+        birth_day: 出生日
+
+    Returns:
+        星座
+    """
+    for constellation, date_range in zodiac_dict.items():
+        start_date, end_date = date_range
+        if (birth_month, birth_day) >= start_date and (birth_month, birth_day) <= end_date:
+            return constellation
+
+# 计算生肖
+def get_zodiac_animal(birth_year):
+    """
+    根据出生年计算生肖
+
+    Args:
+        birth_year: 出生年
+
+
+ 
